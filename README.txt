@@ -1,1 +1,0 @@
-Tambahkan music.mp3 di folder utama. Foto sudah dimasukkan (13 foto). Jika ada foto ke-14, salin menjadi images/14.jpg
