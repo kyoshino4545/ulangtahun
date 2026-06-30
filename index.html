@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Mia ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:#071020;color:#fff;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#2d1c61,#071020 70%);z-index:-2}
+#stars{position:fixed;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:40px 40px;opacity:.35;animation:s 80s linear infinite;z-index:-1}
+@keyframes s{to{transform:translateY(-1000px)}}
+.hero{height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+.card{max-width:720px;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);padding:50px;border-radius:28px;text-align:center}
+h1{font-family:"Great Vibes",cursive;font-size:72px;color:#ff8ecf}
+button{margin-top:25px;padding:15px 34px;border:none;border-radius:30px;background:#ff5ea7;color:#fff;cursor:pointer}
+.hidden{display:none}
+section{padding:70px 20px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1200px;margin:auto}
+.photo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;transition:.3s}
+.photo img:hover{transform:scale(1.04)}
+.photo span{display:block;padding:8px;text-align:center}
+#letter .box{max-width:850px;margin:auto;background:rgba(255,255,255,.08);padding:30px;border-radius:20px;line-height:1.8}
+#ending{text-align:center;padding:120px 20px}
+.heart{position:fixed;bottom:-20px;animation:f 8s linear forwards}
+@keyframes f{to{transform:translateY(-110vh);opacity:0}}
+</style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff4d6d">
+</head>
+<body>
+<div id="stars"></div>
+<audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<section class="hero" id="hero">
+<div class="card">
+<h3>Happy Birthday</h3>
+<h1>Mia ❤️</h1>
+<p>Untuk seseorang yang selalu membuat hariku lebih indah.</p>
+<button id="start">Open My Heart ❤️</button>
+</div>
+</section>
+
+<section id="gallery" class="hidden">
+<h2 style="text-align:center;margin-bottom:30px">Our Memories</h2>
+<div class="gallery">
+<div class="photo"><img src="images/01.jpg"><span>Awal dari semua cerita ❤️</span></div>
+<div class="photo"><img src="images/02.jpg"><span>Senyummu favoritku</span></div>
+<div class="photo"><img src="images/03.jpg"><span>Terima kasih sudah hadir</span></div>
+<div class="photo"><img src="images/04.jpg"><span>Selalu membuatku bahagia</span></div>
+<div class="photo"><img src="images/05.jpg"><span>Kenangan indah</span></div>
+<div class="photo"><img src="images/06.jpg"><span>Semoga selalu bersama</span></div>
+<div class="photo"><img src="images/07.jpg"><span>My favorite person</span></div>
+<div class="photo"><img src="images/08.jpg"><span>Love You ❤️</span></div>
+<div class="photo"><img src="images/09.jpg"><span>Selalu di hatiku</span></div>
+<div class="photo"><img src="images/10.jpg"><span>Momen berharga</span></div>
+<div class="photo"><img src="images/11.jpg"><span>Thank You</span></div>
+<div class="photo"><img src="images/12.jpg"><span>Always Together</span></div>
+<div class="photo"><img src="images/13.jpg"><span>Happy Birthday</span></div>
+<div class="photo"><img src="images/14.jpg"><span>I Love You Forever</span></div>
+
+</div>
+</section>
+
+<section id="letter">
+<div class="box">
+<h2>💌 Untuk Mia</h2>
+<p id="typing"></p>
+</div>
+</section>
+
+<section id="ending">
+<h1>Happy Birthday Mia ❤️</h1>
+<p>Semoga semua impianmu tercapai. Terima kasih sudah hadir di hidupku. I Love You Forever.<br><br><strong>— Hokky</strong></p>
+</section>
+
+<script>
+const msg=`Happy Birthday Mia ❤️
+
+Terima kasih sudah hadir di hidupku.
+Semoga semua impianmu tercapai.
+Semoga kita bisa membuat lebih banyak kenangan indah bersama.
+I Love You Forever.
+
+— Hokky ❤️`;
+let i=0;
+function type(){if(i<msg.length){typing.textContent+=msg[i++];setTimeout(type,35);}}
+start.onclick=()=>{
+music.play().catch(()=>{});
+hero.style.display='none';
+gallery.classList.remove('hidden');
+type();
+document.querySelectorAll('.photo').forEach((p,n)=>setTimeout(()=>p.style.opacity=1,n*120));
+}
+setInterval(()=>{
+let h=document.createElement('div');
+h.className='heart';
+h.textContent='❤';
+h.style.left=Math.random()*100+'vw';
+h.style.fontSize=(16+Math.random()*20)+'px';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+},350);
+</script>
+
+<script>
+if('serviceWorker' in navigator){
+window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));
+}
+</script>
+
+</body>
+</html>
